@@ -4,3 +4,6 @@
 [submodule "navi-yolo"]
 	path = navi-yolo
 	url = https://github.com/devangguptaa/navi-yolo.git
+[submodule "NAVI_Stick-ESP-Code-stack"]
+	path = NAVI_Stick-ESP-Code-stack
+	url = https://github.com/AaronCherian404/NAVI_Stick-ESP-Code-stack.git
