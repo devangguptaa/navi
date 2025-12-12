@@ -1,0 +1,6 @@
+[submodule "navi-rpi"]
+	path = navi-rpi
+	url = https://github.com/devangguptaa/navi-rpi.git
+[submodule "navi-yolo"]
+	path = navi-yolo
+	url = https://github.com/devangguptaa/navi-yolo.git
