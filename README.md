@@ -16,7 +16,6 @@ By leveraging Edge AI on a Raspberry Pi and real-time sensor processing on an ES
 ---
 
 ## 📖 Website:
-Course Website: 
 Live Demo Video: https://www.youtube.com/watch?v=i3LiQw6iYxM
 
 ---
@@ -64,8 +63,35 @@ NAVI uses a dual-processor architecture: an **ESP32** for low-latency sensor fus
 * **Raspberry Pi 5** (Raspberry Pi OS 64-bit)
 * **ESP32** (MicroPython firmware)
 * **Python 3.10+**
+* Security Certificates from AWS IoT Core 
 
-### 1. Clone the Repository
+### 1. Execute on Raspberry Pi 
 ```bash
-git clone [https://github.com/devangguptaa/navi.git](https://github.com/devangguptaa/navi.git)
+git clone --recursive-submodule https://github.com/devangguptaa/navi.git
 cd navi
+
+conda create -n navi python=3.12 -y 
+conda activate navi 
+
+cd navi-rpi
+pip install -r requirements.txt
+
+python3 voice_assistant.py 
+
+#in another terminal 
+python3 obstacle_depth.py 
+
+# in another terminal 
+python3 GPS_Module/aws_gps_publisher.py
+``` 
+
+### 2. Execute on ESP32 
+
+```bash 
+```bash
+git clone --recursive-submodule https://github.com/devangguptaa/navi.git
+cd navi/NAVI_Stick-ESP-Code-stack
+
+mpfshell -nc "open <PORT_NAME>; mput."
+``` 
+
