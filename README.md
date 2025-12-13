@@ -1,9 +1,4 @@
 # NAVI - Navigation Assistant for the Visually Impaired
-
-**Course:** EECS E4764 Fall '25 - Artificial Intelligence of Things (AIoT)  
-**University:** Columbia University  
-**Instructor:** Prof. Xiaofan (Fred) Jiang
-
 ---
 
 ## 📖 Abstract
@@ -22,7 +17,7 @@ By leveraging Edge AI on a Raspberry Pi and real-time sensor processing on an ES
 
 ## 📖 Website:
 Course Website: 
-Live Demo Video: 
+Live Demo Video: https://www.youtube.com/watch?v=i3LiQw6iYxM
 
 ---
 
