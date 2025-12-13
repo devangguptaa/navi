@@ -88,7 +88,6 @@ python3 GPS_Module/aws_gps_publisher.py
 ### 2. Execute on ESP32 
 
 ```bash 
-```bash
 git clone --recursive-submodule https://github.com/devangguptaa/navi.git
 cd navi/NAVI_Stick-ESP-Code-stack
 
