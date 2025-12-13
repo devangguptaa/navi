@@ -1,0 +1,521 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Columbia University EECS E4764 AIoT Project Report</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<style>
+			#team .item img {
+				height: 300px;
+				object-fit: cover;
+				width: 100%;
+			}
+			#team .item header p {
+				margin: 5px 0;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<!-- <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span> -->
+							<h1 id="title">NAVI - Navigation Assistant for the Visually Impaired</h1>
+							<p>Columbia University <br>
+								EECS E4764 Fall'25 <br>
+								Artificial Intelligence of Things<br>
+								Team 18 Project Report
+							</p>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<!--
+
+								Prologue's nav expects links in one of two formats:
+
+								1. Hash link (scrolls to a different section within the page)
+
+								   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+								2. Standard link (sends the user to another page/site)
+
+								   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+							-->
+							<ul>
+								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Abstract</span></a></li>
+								<li><a href="#motivation" id="motivation-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Motivation</span></a></li>
+								<li><a href="#system" id="system-link" class="skel-layers-ignoreHref"><span class="icon fa-th">System Design</span></a></li>
+								<li><a href="#results" id="results-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Results</span></a></li>
+								<li><a href="#challenges" id="challenges-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Challenges & Future Work</span></a></li>
+								<li><a href="#references" id="references-link" class="skel-layers-ignoreHref"><span class="icon fa-th">References</span></a></li>
+								<li><a href="#team" id="team-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Our Team</span></a></li>
+								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+						<!-- <ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+							<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+						</ul> -->
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
+
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/i3LiQw6iYxM" frameborder="0" allowfullscreen></iframe>
+
+								<h2 class="alt">NAVI - Navigation Assistant for the Visually Impaired</h2>
+								<p><strong></strong>NAVI is an assistive technology device designed to help blind or visually impaired individuals navigate their surroundings independently.</strong></p>
+								<p>The system implements a multi-sensor fusion architecture integrating a GPS sensor module, Time-of-Flight (ToF) sensors, LiDAR, IMU, and Computer Vision through a Depth Camera for real-time environmental perception and hazard detection.
+								The device employs a dual-processor architecture: an ESP32 microcontroller for sensor acquisition and real-time processing, paired with a Raspberry Pi for edge AI inference. User feedback is delivered through piezo buzzers, bluetooh headsets, and a web dashboard connected to AWS IoT Core. Key features include swing-compensated obstacle detection, pothole and step detection via ground-distance analysis, voice commands through OpenAI Whisper, and GPS turn-by-turn navigation.
+								</p>
+
+
+						<footer>
+							<a href="https://github.com/devangguptaa/navi" class="button">GitHub Repository</a>
+						</footer>						
+					</div>
+					</section>
+
+				<!-- Portfolio -->
+					<section id="motivation" class="two">
+						<div class="container">
+
+							<header>
+								<h2>Motivation</h2>
+							</header>
+
+							<p align="left">According to WHO, approximately 43 million people globally live with blindness while 295 million experience moderate-to-severe visual impairment—projections indicate a 55% increase by 2050. Traditional white canes offer only ground-level detection through physical contact, providing no advance warning, environmental context, or emergency communication capability.
+							Existing solutions present significant economic barriers: guide dogs exceed $30,000, while smart canes range $500–$3,000 with limited functionality. NAVI addresses this by leveraging commodity hardware (ESP32 ~$10, VL53L0X ToF ~$8, TF-Luna LiDAR ~$25) to deliver sophisticated sensing at under $200 total BOM cost, making it accessible across diverse economic circumstances.
+							</p>
+						</div>
+					</section>
+
+
+				<section id="system" class="three">
+					<div class="container">
+
+						<header>
+							<h2>System Design</h2>
+						</header>
+
+						<a  class="image fit"><img src="images/Where Am I Going.jpg" alt="NAVI System Prototype"/></a>
+						<h3 align="left">Overview</h3>
+						<p align="left">NAVI implements a hierarchical architecture distributing processing across embedded microcontrollers for real-time sensor fusion, edge computing for AI inference, and cloud services for data persistence.</p>
+
+					<h3 align="left">Technical Architecture</h3>
+					<p align="left">The NAVI system architecture depicts the data flow from sensor acquisition through processing layers to user feedback mechanisms and cloud connectivity. The architecture is organized into four primary functional domains:</p>
+					<ol align="left" style="margin-left: 20px; list-style-type: disc;">
+						<li><strong>Sensor Stack:</strong> For surrounding environmental data</li>
+						<li><strong>Edge Processing:</strong> For local AI inference and decision-making</li>
+						<li><strong>Cloud Processing:</strong> For data persistence and emergency services</li>
+						<li><strong>Frontend (User Friendly Interface):</strong> For multi-modal feedback</li>
+					</ol>						
+					<h3 align="left">Hardware Design</h3>
+
+						<h4 align="left">Core Processing Units</h4>
+						<ul align="left" style="margin-left: 20px; list-style-type: disc;">
+							<li><strong>Adafruit Feather HUZZAH32 ESP32:</strong> 240MHz dual-core for sensor acquisition, signal conditioning, low-level obstacle detection, and haptic feedback via PWM</li>
+							<li><strong>Raspberry Pi 5:</strong> Edge AI processor running a fine-tuned YOLO v11 Nano object detection, Whisper speech-to-text, POE API for LLM inferencing, GPS navigation using Open Source Routing Machine API, and MQTT communication with AWS IoT Core</li>
+						</ul>
+
+					<h4 align="left">Sensor Integration & User Feedback Mechanisms</h4>
+					<ul align="left" style="margin-left: 20px; list-style-type: disc;"> 
+						<li><strong>Arducam ToF Depth Camera:</strong> Depth Camera for Obstacle Detection to avoid collision</li>
+						<li><strong> GNSS GPS Module:</strong> Track real time live location using satellite data and returns latitude and longitude coordinates</li>
+						<li><strong>TF-Luna LiDAR Scanner:</strong> Servo assisted, 180-degree surrounding scan with three-zone detection (left, center, right)</li>
+						<li><strong>VL53L0X Time of Flight Sensor:</strong> Step and Pothole detection with calibrated thresholds for walking speed</li>
+						<li><strong>MPU6050 IMU:</strong> 6-DOF accelerometer and gyroscope for motion sensing and fall detection</li>
+						<li><strong>Piezo Buzzer:</strong> Distinct patterns for immediate obstacles and potholes</li>
+					</ul>
+
+					<!-- <h3 align="left">Sensor Components</h> -->
+					<table style="
+					width: 100%;
+					table-layout: fixed;
+					border-collapse: collapse;
+					margin: 20px 0;
+					background: #ffffff;
+					border-radius: 8px;
+					overflow: hidden;
+					;
+					">
+					<thead>
+						<tr style="background-color: #f5f7fb; color: #2f3a4f;">
+						<th style="width: 30%; border-bottom: 1px solid #e6e9f0; padding: 14px; text-align: center; font-weight: 600;">
+							Component
+						</th>
+						<th style="width: 30%; border-bottom: 1px solid #e6e9f0; padding: 14px; text-align: center; font-weight: 600;">
+							Specifications
+						</th>
+						<th style="width: 40%; border-bottom: 1px solid #e6e9f0; padding: 14px; text-align: center; font-weight: 600;">
+							Function in NAVI
+						</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr style="background-color: #fafbfd;">
+						<td style="padding: 14px; font-weight: 600; color: #4a6fa5; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							Arducam ToF Depth Camera
+						</td>
+						<td style="padding: 14px; font-size: 0.95em; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							<span>70 Degree Field of View</span><br>
+							<span >30 fps</span><br>
+							<span>4M range</span><br>
+						</td>
+						<td style="padding: 14px; line-height: 1.45; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							Fine Tuned YOLOv11 nano to detection persons and obstacles used depth frames<br>
+						</td>
+						</tr>
+
+						<tr style="background-color: #fafbfd;">
+						<td style="padding: 1px; font-weight: 600; color: #4a6fa5; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							GNSS GPS Module
+						</td>
+						<td style="padding: 14px; font-size: 0.95em; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							<span >Supports GPS and GLONASS</span>
+							<span >Accurate up to 2.5m</span><br>
+							<span>Connects too up to 22 satellites for accurate location</span><br>
+						</td>
+						<td style="padding: 14px; line-height: 1.45; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							Returns latitude and longitude coordinates to MQTT for live location traacking.Provides turn by turn directions<br>
+						</td>
+						</tr>
+
+						<tr>
+
+						<td style="border-bottom: 1px solid #e6e9f0; padding: 14px; font-weight: 600; color: #4a6fa5; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							VL53L0X ToF
+						</td>
+						<td style="border-bottom: 1px solid #e6e9f0; padding: 14px; font-size: 0.95em; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							<span >Range: 50–2000 mm</span><br>
+							<span >Accuracy: ±3%</span><br>
+							<span >I2C</span>
+						</td>
+						<td style="border-bottom: 1px solid #e6e9f0; padding: 14px; line-height: 1.45; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							Ground hazard detection<br>
+							Potholes, stairs
+						</td>
+						</tr>
+
+						<tr style="background-color: #fafbfd;">
+						<td style="border-bottom: 1px solid #e6e9f0; padding: 14px; font-weight: 600; color: #4a6fa5; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							TF-Luna LiDAR
+						</td>
+						<td style="border-bottom: 1px solid #e6e9f0; padding: 14px; font-size: 0.95em; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							<span >0.2–8 m</span><br>
+							<span>UART</span>
+						</td>
+						<td style="border-bottom: 1px solid #e6e9f0; padding: 14px; line-height: 1.45; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							Mounted on a servo to increase field of vision from 2 degrees to 180 degrees<br>
+							Low hanging obstacle detection that can be missed by ToF and Depth Camera
+						</td>
+						</tr>
+
+						<tr>
+						<td style="border-bottom: 1px solid #e6e9f0; padding: 14px; font-weight: 600; color: #4a6fa5; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							MPU6050 IMU
+						</td>
+						<td style="border-bottom: 1px solid #e6e9f0; padding: 14px; font-size: 0.95em; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							<span >6-DoF</span><br>
+							<span>16-bit</span>
+						</td>
+						<td style="border-bottom: 1px solid #e6e9f0; padding: 14px; line-height: 1.45; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							Motion and fall detection<br>
+							Tracks accelerometer and gyroscope data to detect falls and sends an alert to AWS IoT Core
+						</td>
+						</tr>
+
+						<tr style="background-color: #fafbfd;">
+						<td style="padding: 14px; font-weight: 600; color: #4a6fa5; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							Piezo Sensor
+						</td>
+						<td style="padding: 14px; font-size: 0.95em; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							<span>Analog</span>
+						</td>
+						<td style="padding: 14px; line-height: 1.45; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+							Grip detection<br>
+							Audio feedback for obstacles and steps
+						</td>
+						</tr>
+					</tbody>
+					</table>
+
+
+					<p align="left" style="font-size: 0.9em; font-style: italic; margin-top: 15px; color: #666; text-align: center;"><strong>Table 1:</strong> NAVI Sensor Specifications and Functions</p>						
+					<h3 align="left">Software Architecture</h3>
+						<h4 align="left">Embedded Firmware (ESP32 - MicroPython)</h4>
+						<h4 align="left">The ESP32 firmware manages real-time sensor Integration. </h4>
+						<ul align="left" style="margin-left: 20px; list-style-type: disc;">
+							<li><strong>Pothole Detection:</strong> Uses the VL53L0x ToF module connected via I2C, sampled at approximately 12Hz. Ground-distance baseline calibration detects significant increases (&gt;100mm above baseline) indicating ground surface dropout.</li>
+							<li><strong>LiDAR Scanner Control:</strong> The TF-Luna LiDAR coordinates in tandem with the servo rotations while measuring distance, dividing 180° scan into three zones with configurable servo speed. Each zone is updated at 2.5Hz.</li>
+							<li><strong>IMU-based Fall Detection:</strong> MPU6050 accelerometer and gyroscope data processed at 2Hz with thresholding and temporal filtering to identify falls, triggering MQTT alerts.</li>
+							<li><strong>MQTT Communication:</strong> Manages data transmission between ESP32 and AWS IoT Core, to send fall alerts.</li>
+						</ul>
+
+						<h4 align="left">Raspberry Pi - Edge AI</h4>
+						<ul align="left" style="margin-left: 20px; list-style-type: disc;">
+							<li><strong>Object Detection:</strong> A fine tuned YOLO v11 Nano processes ~10 FPS to identify pedestrians, and obstacles (vehicles, animals, signs) and notifies the user their distance from with accurate text-to-speech descriptions.</li>
+							<li><strong>Voice Assistant NAVI:</strong> Use a end to end pipeline that records user voice commands, interprets and responds with an appropriate reply.</li>
+							<li><strong>Porcupine Wake Word:</strong> Use the Porcupine library for custom wake word detection using "Hey Navi".</li>
+							<li><strong>Speech-to-Text:</strong> OpenAI Whisper model processes audio commands locally into text for further interpretation.</li>
+							<li><strong>Large Language Model:</strong> POE API processes text commands to generate context-aware responses or corresponding function to be executed.</li>
+							<li><strong>Text-to-Speech:</strong> pyttsx3 library converts generated text responses into audio feedback played over Bluetooth earbuds.</li>
+							<li><strong>GPS Navigation:</strong> Open Source Routing Machine API provides turn-by-turn navigation instructions based on real-time GPS coordinates from the GNSS module.</li>
+							<li><strong>MQTT Communication:</strong> Manages data transmission between Raspberry Pi and AWS IoT Core for real-time live location transfer.</li>
+						</ul>
+
+						<h4 align="left">Cloud Services & Frontend</h4>
+						<ul align="left" style="margin-left: 20px; list-style-type: disc;">
+							<li><strong>AWS IoT Core:</strong> MQTT broker for bidirectional communication, publishing fall detection events and location updates.</li>
+							<li><strong>User Dashboard</strong> Contains real-time location tracking, fall event history, directions to current location, and emergency alerts. </li>
+						</ul>
+
+						<!-- <h3 align="left">Testing & Validation</h3>
+						<ul align="left" style="margin-left: 20px; list-style-type: disc;">
+							<li><strong>Obstacle/Curb Detection:</strong> 3-sample averaging with 2-reading confirmation. Thresholds: &lt;50mm (DANGER - 1 long beep), &lt;100mm (CAUTION - 2 short beeps)</li>
+							<li><strong>Pothole Detection:</strong> Baseline calibration with &gt;100mm increase detection, 2-confirmation filtering, 3 rapid pulses (3000Hz) alert pattern</li>
+							<li><strong>LiDAR Scanner:</strong> 180° scans in 30° increments with direction-specific vibration feedback</li>
+							<li><strong>Communication:</strong> ESP32↔Pi via UART (115200 baud), Pi↔AWS via MQTT/TLS, Frontend↔Cloud via REST/HTTPS</li>
+						</ul> -->
+
+					</div>
+				</section>
+					<section id="results" class="two">
+						<div class="container">
+
+							<header>
+								<h2>Results</h2>
+							</header>
+							<h3 align="left">Obstacle Detection Using Depth Camera</h3>
+							<a  class="image fit"><img src="images/depth_camera_1.png" alt="person detection"/></a>
+							<a  class="image fit"><img src="images/detections_cli.png" alt="distance measurement" /></a>
+							<p align="left">Fine Tuned YOLO model detects people and obstacles and returns bounding boxes allowing us to check the distance of given object from the camera. Terminal Output shows object being detected and distance being returned.</p>
+							<h3 align="left">GPS Navigation </h3>
+							<a  class="image fit"><img src="images/gps_navigation.png" alt="gps navigation"/></a>
+							<p align="left">Open Source Routing Machine provides turn by turn navigation instructions which are converted to audio feedback using text to speech.</p>
+							<h3 align="left">Voice Assistant</h3>
+							<a class ="image fit"><video controls width="400">
+							<source src="images/voice-assistant.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+							</video></a>
+							<p align="left">OpenAI Whisper is used for speech to text conversion. The recognized text is sent to POE API which generates a response that is converted to speech using text to speech. NAVI integrates over Bluetooth with any earbud or speaker, allowing seamless wireless audio connectivity for voice commands and responses.</p>
+
+							<h3 align="left">IMU -based Fall Detection</h3>
+							<a class ="image fit"><video controls width="400">
+							<source src="images/fall_detection.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+							</video></a>
+							<p align="left">The MPU6050 IMU tracks accelerometer and gyroscope data to detect falls. On detecting a fall, an alert is sent to AWS IoT Core using MQTT protocol. The alert text can be seen on the  lower half of the dashboard</p>
+
+							<h3 align="left">Step Detection Using ToF Sensor</h3>
+							<a class ="image fit"><video controls width="1000">
+							<source src="images/tof step.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+							</video></a>
+							<a class="image fit"><img src="images/tof_cli.png" alt="tof step data" /></a>
+							<p align="left">The VL53L0X ToF sensor is used for ground hazard detection. A baseline distance is calibrated when the user is standing still. As the user walks, a significant increase in distance indicates a pothole or step down. On detecting a step down, a distinct buzzer pattern is played to alert the user.</p>
+
+
+							<h3 align="left">LiDAR-based Obstacle Detection</h3>
+							<a  class ="image fit"><img src="images/lidar_data.png" alt="lidar obstacle detection"/></a>
+							<p align="left">The LiDAR high range allows us to measure obstacles up to 8m. We can see how distance varies at different angles, and as object approaches closer, a reduction in distance is seen. </p>
+
+							<h3 align="left">User Tracking & Alerts Dashboard</h3>
+							<a  class="image fit"><img src="images/user_dashboard.png" alt="dashboard"/></a>
+							<p align="left">AWS IoT Core is used for communication between the device and the cloud. The dashboard shows real-time location of the user on map, and history of fall alerts with timestamps.</p>
+						</div>
+					</section>
+
+				<section id="challenges" class="two">
+					<div class="container"> 
+						<header>
+							<h2>Challenges and Future Work</h2>
+						</header>
+
+						<h3 align="left">Challenges</h3>
+						<ul align="left" style="margin-left: 20px; list-style-type: disc;">
+							<li><strong>Fine Tuning YOLO:</strong> Due to the lack of dataset on object detection using depth maps, we had to reformulate RGB frames to depth map like representations for training. The fine tuning led to a significant drop in training loss over 100 epochs and did improve our accuracy for obstacle detction compared to zero-shot YOLO inference. However, training the model to detect more objects leads to a large increase in false positives. This indicates poor confidence calibration and overlapping feature representations between classes, especially in cluttered or ambiguous scenes.</li>
+							<a class ="image fit"><img src="images/yolo_train.png" alt="YOLO Training Loss"/></a>
+							<a class="image fit"><img src="images/yolo_test.png" alt="YOLO Training"/></a>
+							<li><strong>Latency: </strong>With YOLOv11, Whisper, real-time location processing, TTS engines, running locally, prolonged runtime saw the RPI having increased temperatures which affected resulted in throttling and reduced performance. We can tackle this by installing a cooling solution such as a cooling fan or heat sink </li>
+							<li><strong>Power consumption: </strong>Powering a LiDAR, servo, ToF, IMU using the built in power from the ESP32 lead to erratic execution in some cases. This can be fixed using a additonal external power source (Li-Ion Battery with Buck Convertor) that can power both the ESP32 and RPI.</li>
+
+						</ul>
+
+						<h3 align="left">Future Work</h3>
+						<ul align="left" style="margin-left: 20px; list-style-type: disc;">
+							<li><strong>Enhanced Obstacle Detection:</strong> Integrate RGB camera along with a depth camera using fusion algorithms for robust obstacle detection in diverse environments.</li>
+							<li><strong>Energy Optimization:</strong> Implement dynamic power management strategies to extend battery life during prolonged use.</li>
+							<li><strong>Additional Functionalities:</strong> Extend NAVI to support users with mobility impairments (e.g., wheelchair users) and incorporate adaptive, user-specific AI models for improved accuracy and usability.</li>
+						</ul>
+					</div>
+				</section>
+
+				<section id="references" class="three">
+					<div class="container">
+
+						<header>
+							<h2>References</h2>
+						</header>
+
+						<ol align="left">
+							<li><a href="https://www.raspberrypi.com/news/deploying-ultralytics-yolo-models-on-raspberry-pi-devices/">YOLO on RPi: https://www.raspberrypi.com/news/deploying-ultralytics-yolo-models-on-raspberry-pi-devices/</a></li>
+							<li><a href="https://docs.aws.amazon.com/iot/">AWS Hosting: https://docs.aws.amazon.com/iot/</a></li>
+							<li><a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html">MQTT Communication Protocols: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html</a></li>
+							<li><a href="https://github.com/OneMadGypsy/upy-motion">IMU Driver: https://github.com/OneMadGypsy/upy-motion</a></li>
+							<li><a>Paek, J., Kim, J., & Govindan, R. (2010). Energy-Efficient Rate-Adaptive GPS-based Positioning for Smartphones. Proceedings of the 8th International Conference on Mobile Systems, Applications, and Services, 299-314.</a></li>
+						</ol>
+
+					</div>
+				</section>
+				<!-- About Me -->
+					<section id="team" class="two">
+						<div class="container">
+
+							<header>
+								<h2>Our Team</h2>
+							</header>
+
+							<!-- <a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a> -->
+
+
+						<div class="row">
+							<div class="3u 12u$(mobile)">
+								<article class="item">
+									<a href="#" class="image fit"><img src="images/aaron.jpg" alt="Aaron Cherian" /></a>
+									<header>
+										<h3>Aaron Cherian</h3>
+										<p>MS Computer Engineering</p>
+										<p>Columbia University</p>
+										<p><a href="https://aaroncherian404.github.io/Portfolio_Website_Min/Landingpage.html">Website</a></p>
+									</header>
+								</article>
+							</div>
+							<div class="3u 12u$(mobile)">
+								<article class="item">
+									<a href="#" class="image fit"><img src="images/devang.jpeg" alt="Devang Gupta" /></a>
+									<header>
+										<h3>Devang Gupta</h3>
+										<p>MS Computer Engineering</p>
+										<p>Columbia University</p>
+										<p><a href="https://www.linkedin.com/in/devangguptaa/">Website</a></p>
+									</header>
+								</article>
+							</div>
+							<div class="3u 12u$(mobile)">
+								<article class="item">
+									<a href="#" class="image fit"><img src="images/aarush.jpg" alt="Aarush Agarwal" /></a>
+									<header>
+										<h3>Aarush Agarwal</h3>
+										<p>MS Electrical Engineering</p>
+										<p>Columbia University</p>
+										<p><a href="https://www.linkedin.com/in/aarushagarwal02">Website</a></p>
+									</header>
+								</article>
+							</div>
+							<div class="3u$ 12u$(mobile)">
+								<article class="item">
+									<a href="#" class="image fit"><img src="images/anurag.jpg" alt="Anurag Chatterjee" /></a>
+									<header>
+										<h3>Anurag Chatterjee</h3>
+										<p>MS Computer Engineering</p>
+										<p>Columbia University</p>
+										<p><a href="https://www.linkedin.com/in/anuragschatterjee/">Website</a></p>
+									</header>
+								</article>
+							</div>
+						</div>						
+					</div>
+					</section>
+
+				<!-- Contact -->
+					<section id="contact" class="four">
+						<div class="container">
+
+							<header>
+								<h2>Contact</h2>
+							</header>
+
+						<p align="left">
+							<strong>Devang Gupta: </strong><a href="mailto:devang.gupta@columbia.edu">devang.gupta@columbia.edu</a></br>
+							<strong>Aaron Cherian: </strong><a href="mailto:aaron.cherian@columbia.edu">aaron.cherian@columbia.edu</a></br>
+							<strong>Aarush Agarwal: </strong><a href="mailto:aa5763@columbia.edu">aa5763@columbia.edu</a></br>
+							<strong>Anurag Chatterjee: </strong><a href="mailto:ac5929@columbia.edu">anurag@columbia.edu</a></br> 	
+						</br>
+							<strong>Columbia University </strong><a href="http://www.ee.columbia.edu">Department of Electrical Engineering</a><br>
+							<!-- <strong>Class Website:</strong>
+								<a href="https://edblogs.columbia.edu/eecs4764-001-2019-3/">Columbia University EECS E4764 Fall '22 IoT</a></br> -->
+							<strong>Instructor:</strong> <a href="https://www.engineering.columbia.edu/faculty-staff/directory/xiaofan-fred-jiang">Professor Xiaofan (Fred) Jiang</a>
+						</p>
+							<!-- <form method="post" action="#">
+								<div class="row">
+									<div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name" /></div>
+									<div class="6u$ 12u$(mobile)"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="12u$">
+										<textarea name="message" placeholder="Message"></textarea>
+									</div>
+									<div class="12u$">
+										<input type="submit" value="Send Message" />
+									</div>
+								</div>
+							</form> -->
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; IoT Project | All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollzer.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
